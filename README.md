@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TrackProg - Gym Progress Tracking App
 
-## Getting Started
+**TrackProg** is an application designed to help users track their gym progress by allowing them to register and log workout routines, weight, repetitions, and sets. This app simplifies fitness tracking, helping users monitor and achieve their fitness goals over time.
 
-First, run the development server:
+## Features
+- Create and manage custom workout routines.
+- Track weight, repetitions, and sets for each exercise.
+- View and analyze progress over time.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Tech Stack
+- **Next.js** - For server-side rendering and fast frontend development.
+- **Material UI (MUI)** - For building a responsive and attractive user interface.
+- **Node.js/Express** - For backend services (optional).
+- **MongoDB/PostgreSQL** - Database to store user data (optional).
+
+## Installation
+
+### Prerequisites
+- **Node.js** (>= 14.x)
+- **npm** or **yarn**
+- Optional: **MongoDB** or **PostgreSQL** for storing workout data
+
+## Setup Instructions
+1. Clone the repository:
+    ```bash Copy code
+    git clone https://github.com/your-username/trackprog.git
+    cd trackprog
+    ```
+2. Install dependencies:
+    ```bash Copy code
+    npm install
+    # or
+    yarn install
+    ```
+3. Set up the environment variables in `.env.local` (for database, API keys, etc.):
+    ```makefile Copy code
+    DATABASE_URL=your-database-url
+    NEXT_PUBLIC_API_URL=http://localhost:3000
+    ```
+4. Run the development server:
+    ```bash Copy code
+    npm run dev
+    # or
+    yarn dev
+    ```
+5. Open http://localhost:3000 in your browser to see the app running.
+
+## Usage
+1. **Sign Up**: Users can create a new account and start logging their workouts.
+2. **Create a Routine**: Add workout routines, including exercises, sets, reps, and weight.
+3. **Track Progress**: Update workout logs after each session to track progress over time.
+4. **View Analytics**: Get insights into your workout history and progress trends.
+
+## Folder Structure
+```bash Copy code
+trackprog/
+├── components/        # React components used in the app
+├── pages/             # Next.js pages
+│   ├── index.tsx      # Main entry page
+│   └── login.tsx      # Login page
+├── public/            # Static assets like images, icons, etc.
+├── styles/            # Global and component-specific styles
+├── utils/             # Utility functions and helpers
+├── .env.local         # Environment variables
+└── README.md          # Project documentation
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
+You can deploy this Next.js app using platforms like Vercel, Netlify, or any hosting provider that supports Node.js.
 
 ## Deploy on Vercel
+1. Push the project to a GitHub repository.
+2. Go to Vercel, sign in, and link your repository.
+3. Click "Deploy" and Vercel will automatically handle the deployment process.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
+This project is licensed under the MIT License.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## Contact
+For any questions, feel free to reach out at [hi@trackprog.com](emailto:hi@trackprog.com).
