@@ -1,10 +1,20 @@
 'use client';
+
+import { Container, createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import Login from "../components/Login";
-import { useTranslations } from "use-intl";
 
 export default function Home() {
-  const t = useTranslations('login');
+  const theme = createTheme({
+    palette: {
+      mode: 'light'
+    },
+  });
   return (
-    <Login />
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Login />
+      </Container>
+    </ThemeProvider>
   );
 }
