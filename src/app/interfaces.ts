@@ -7,3 +7,9 @@ interface FormDataInterface {
     email: string;
     password: string;
 }
+
+interface TabPanelProps {
+    children?: React.ReactNode;
+    index: number;
+    value: number;
+}

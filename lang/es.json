@@ -1,5 +1,15 @@
 {
     "login": {
-        "login": "Iniciar sesion"
+        "login": "Log in"
+    },
+    "dashboard": {
+        "Sunday": "Domingo",
+        "Monday": "Lunes",
+        "Tuesday": "Martes",
+        "Wednesday": "Miércoles",
+        "Thursday": "Jueves",
+        "Friday": "Viernes",
+        "Saturday": "Sábado",
+        "trainingDays": "Días de entrenamiento"
     }
 }

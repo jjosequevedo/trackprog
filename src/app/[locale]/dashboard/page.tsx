@@ -1,12 +1,17 @@
+'use client';
+
 import { useState } from 'react';
 import { AppBar, Box, CssBaseline, Drawer, Toolbar, Typography, IconButton, BottomNavigation, BottomNavigationAction } from '@mui/material';
 import { Menu as MenuIcon, Home, Settings, Dashboard as DashBoardIcon, AccountCircle } from '@mui/icons-material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import Days from '@/app/components/Days';
 
 const drawerWidth = 240;
 
 export default function Dashboard() {
+
+
   const [mobileOpen, setMobileOpen] = useState(false);
   const [bottomNavValue, setBottomNavValue] = useState(0);
   const theme = useTheme();
@@ -14,6 +19,10 @@ export default function Dashboard() {
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+
+  const onClickMenuItem = () => {
+    debugger
   };
 
   const drawer = (
@@ -36,14 +45,14 @@ export default function Dashboard() {
       <CssBaseline />
       <AppBar position="fixed" sx={{ width: { sm: `calc(100% - ${drawerWidth}px)` }, ml: { sm: `${drawerWidth}px` } }}>
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             color="inherit"
             edge="start"
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Typography variant="h6" noWrap component="div">
             Responsive Dashboard
           </Typography>
@@ -92,22 +101,21 @@ export default function Dashboard() {
         }}
       >
         <Toolbar />
-        <Typography paragraph>Content goes here.</Typography>
-        <Typography paragraph>
-          Here is where the main dashboard content will be displayed.
-        </Typography>
+
+        <Days />
+
       </Box>
 
       {/* Bottom navigation for mobile */}
       {isMobile && (
-        <BottomNavigation
+        <BottomNavigation color='blue'
           sx={{ position: 'fixed', bottom: 0, width: '100%', display: { sm: 'none' } }}
           value={bottomNavValue}
           onChange={(event, newValue) => {
             setBottomNavValue(newValue);
           }}
         >
-          <BottomNavigationAction label="Home" icon={<Home />} />
+          <BottomNavigationAction label="Home" icon={<Home />} href='/dashboard' onClick={onClickMenuItem}/>
           <BottomNavigationAction label="Dashboard" icon={<DashBoardIcon />} />
           <BottomNavigationAction label="Settings" icon={<Settings />} />
           <BottomNavigationAction label="Profile" icon={<AccountCircle />} />
