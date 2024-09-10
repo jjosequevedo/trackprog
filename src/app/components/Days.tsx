@@ -6,6 +6,8 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import { useTranslations } from 'next-intl';
 import GridEditable from './GridEditable';
+import { Button } from '@mui/material';
+import dayjs from 'dayjs';
 
 const TabPanel = (props: TabPanelProps) => {
   const { children, value, index, ...other } = props;
@@ -36,36 +38,44 @@ const a11yProps = (index: number) => {
 
 const Days = () => {
   const t = useTranslations('dashboard');
-  const [value, setValue] = React.useState(0);
-
-  const daysOfWeek = [
-    t('Sunday'),
-    t('Monday'),
-    t('Tuesday'),
-    t('Wednesday'),
-    t('Thursday'),
-    t('Friday'),
-    t('Saturday'),
-  ];
+  const [tabs, setTabs] = React.useState<string[]>([dayjs().format('YYYY-MM-DD')]); // Array of date strings
+  const [selectedTab, setSelectedTab] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+    setSelectedTab(newValue);
   };
 
+  const addTab = (daysToAdd: number) => {
+    const newDate = dayjs(tabs[selectedTab]).add(daysToAdd, 'day').format('YYYY-MM-DD');
+    if (!tabs.includes(newDate)) {
+      setTabs((prev) => [...prev, newDate]);
+    }
+    setSelectedTab(tabs.indexOf(newDate) !== -1 ? tabs.indexOf(newDate) : tabs.length);
+  };
+
+  const moveBack = () => addTab(-1); // Move back 1 day
+  const moveForward = () => addTab(1); // Move forward 1 day
+
   return (
-    <Box sx={{ bgcolor: 'background.paper' }}>
-      <Box>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          variant="scrollable"
-          scrollButtons={false}
-          aria-label={t('trainingDays')}
-        >
-          {daysOfWeek.map((d, i) => (<Tab label={d} key={i} {...a11yProps(i)} />))}
-        </Tabs>
+    <Box sx={{ width: '100%', mt: 3 }}>
+      <Button onClick={moveBack} variant="contained" sx={{ mr: 2 }}>
+        Previous Day
+      </Button>
+      <Button onClick={moveForward} variant="contained">
+        Next Day
+      </Button>
+
+      <Tabs value={selectedTab} onChange={handleChange} variant="scrollable" scrollButtons="auto">
+        {tabs.map((date, index) => (
+          <Tab key={date} label={date} />
+        ))}
+      </Tabs>
+
+      {/* Display the content of the selected date */}
+      <Box sx={{ mt: 2 }}>
+        <h3>Selected Date: {tabs[selectedTab]}</h3>
+        <GridEditable />
       </Box>
-      {daysOfWeek.map((d, i) => <TabPanel index={i} value={value} key={d}><GridEditable /></TabPanel>)}
     </Box>
   );
 }
