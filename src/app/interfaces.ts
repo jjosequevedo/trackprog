@@ -1,6 +1,8 @@
 interface RootLayoutProps {
-    children: React.ReactNode;
-    params: { locale: string; }
+    children?: React.ReactNode;
+    params: { 
+        locale?: string; 
+    }
 }
 
 interface FormDataInterface {
@@ -16,4 +18,9 @@ interface TabPanelProps {
 
 interface DashboardThemeProps {
     children?: React.ReactNode;
+    locale?: string;
 }
+
+interface DashboardProps { }
+
+interface SettingsProps { }

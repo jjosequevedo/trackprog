@@ -14,5 +14,8 @@
         "Friday": "Viernes",
         "Saturday": "Sábado",
         "trainingDays": "Días de entrenamiento"
+    },
+    "settings": {
+        "general": "General"
     }
 }

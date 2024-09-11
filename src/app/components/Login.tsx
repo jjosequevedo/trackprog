@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/navigation';
-import { Grid2 } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import { useTranslations } from 'next-intl';
 
 export default function Login() {
@@ -75,11 +75,13 @@ export default function Login() {
                 >
                     {t('signIn')}
                 </Button>
-                <Grid2 container spacing={2}>
-                    <Link href="/recover-password" variant="body2">
-                        {t('forgotPassword')}
-                    </Link>
-                </Grid2>
+                <Grid container spacing={2}>
+                    <Grid size={{ xs: 12 }}>
+                        <Link href="/recover-password" variant="body2">
+                            {t('forgotPassword')}
+                        </Link>
+                    </Grid>
+                </Grid>
             </Box>
         </Box>
     );

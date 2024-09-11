@@ -1,11 +1,13 @@
 'use client';
 
-import { AppBar, BottomNavigation, BottomNavigationAction, Box, CssBaseline, Drawer, Toolbar, Typography, useMediaQuery } from "@mui/material";
+import { AppBar, BottomNavigation, BottomNavigationAction, Box, CssBaseline, Drawer, Link, Toolbar, Typography, useMediaQuery } from "@mui/material";
 import { AccountCircle, Dashboard, Home, Settings } from "@mui/icons-material";
 import { useState } from "react";
 import { useTheme } from '@mui/material/styles';
+import { useLocale } from "next-intl";
 
-const DashboardTheme: React.FC<DashboardThemeProps> = async ({ children }) => {
+const DashboardTheme: React.FC<DashboardThemeProps> = ({ children }) => {
+  const locale = useLocale();
 
   const drawerWidth = 240;
 
@@ -29,8 +31,12 @@ const DashboardTheme: React.FC<DashboardThemeProps> = async ({ children }) => {
         <Typography variant="h6" sx={{ padding: '16px' }}>Dashboard Menu</Typography>
         <Box sx={{ padding: '8px' }}>
           {/* Menu items can be placed here */}
-          <Typography>Home</Typography>
-          <Typography>Settings</Typography>
+          <Link href={`/${locale}/dashboard`}>
+            <Typography>Home</Typography>
+          </Link>
+          <Link href={`/${locale}/settings`}>
+            <Typography>Settings</Typography>
+          </Link>
           <Typography>Profile</Typography>
         </Box>
       </Box>
@@ -104,9 +110,9 @@ const DashboardTheme: React.FC<DashboardThemeProps> = async ({ children }) => {
             setBottomNavValue(newValue);
           }}
         >
-          <BottomNavigationAction label="Home" icon={<Home />} href='/dashboard' onClick={onClickMenuItem} />
+          <BottomNavigationAction label="Home" icon={<Home />} href={`/${locale}/dashboard`} onClick={onClickMenuItem} />
           <BottomNavigationAction label="Dashboard" icon={<Dashboard />} />
-          <BottomNavigationAction label="Settings" icon={<Settings />} />
+          <BottomNavigationAction label="Settings" href={`/${locale}/settings`} icon={<Settings />} />
           <BottomNavigationAction label="Profile" icon={<AccountCircle />} />
         </BottomNavigation>
       )}

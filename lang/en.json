@@ -15,5 +15,8 @@
         "Friday": "Friday",
         "Saturday": "Saturday",
         "trainingDays": "Training days"
+    },
+    "settings": {
+        "general": "General"
     }
 }
