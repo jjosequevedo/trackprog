@@ -13,3 +13,7 @@ interface TabPanelProps {
     index: number;
     value: number;
 }
+
+interface DashboardThemeProps {
+    children?: React.ReactNode;
+}

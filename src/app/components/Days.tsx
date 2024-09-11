@@ -73,7 +73,6 @@ const Days = () => {
 
       {/* Display the content of the selected date */}
       <Box sx={{ mt: 2 }}>
-        <h3>Selected Date: {tabs[selectedTab]}</h3>
         <GridEditable />
       </Box>
     </Box>
