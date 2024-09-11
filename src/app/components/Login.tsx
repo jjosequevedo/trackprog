@@ -8,8 +8,11 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/navigation';
 import { Grid2 } from '@mui/material';
+import { useTranslations } from 'next-intl';
 
 export default function Login() {
+    const t = useTranslations('login');
+
     const router = useRouter();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -41,7 +44,7 @@ export default function Login() {
                 <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-                Sign in
+                {t('signIn')}
             </Typography>
             <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                 <TextField
@@ -49,7 +52,7 @@ export default function Login() {
                     required
                     fullWidth
                     id="email"
-                    label="Email Address"
+                    label={t('emailAddress')}
                     name="email"
                     autoComplete="email"
                     autoFocus
@@ -59,7 +62,7 @@ export default function Login() {
                     required
                     fullWidth
                     name="password"
-                    label="Password"
+                    label={t('password')}
                     type="password"
                     id="password"
                     autoComplete="current-password"
@@ -70,11 +73,11 @@ export default function Login() {
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
                 >
-                    Sign In
+                    {t('signIn')}
                 </Button>
                 <Grid2 container spacing={2}>
                     <Link href="/recover-password" variant="body2">
-                        Forgot password?
+                        {t('forgotPassword')}
                     </Link>
                 </Grid2>
             </Box>

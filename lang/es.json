@@ -1,6 +1,9 @@
 {
     "login": {
-        "login": "Log in"
+        "signIn": "Iniciar sesión",
+        "emailAddress": "Correo electrónico",
+        "password": "Contraseña",
+        "forgotPassword": "¿Olvidaste la contraseña?"
     },
     "dashboard": {
         "Sunday": "Domingo",
