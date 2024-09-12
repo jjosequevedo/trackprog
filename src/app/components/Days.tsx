@@ -8,6 +8,9 @@ import { useTranslations } from 'next-intl';
 import GridEditable from './GridEditable';
 import { Button } from '@mui/material';
 import dayjs from 'dayjs';
+import minMax from 'dayjs/plugin/minMax';
+
+dayjs.extend(minMax);
 
 const TabPanel = (props: TabPanelProps) => {
   const { children, value, index, ...other } = props;
@@ -48,7 +51,7 @@ const Days = () => {
   const addTab = (daysToAdd: number) => {
     const newDate = dayjs(tabs[selectedTab]).add(daysToAdd, 'day').format('YYYY-MM-DD');
     if (!tabs.includes(newDate)) {
-      setTabs((prev) => [...prev, newDate]);
+      setTabs((prev) => [...prev, newDate]/*.sort((a, b) => dayjs.min([dayjs(), dayjs(a), dayjs(b)]))*/);
     }
     setSelectedTab(tabs.indexOf(newDate) !== -1 ? tabs.indexOf(newDate) : tabs.length);
   };
