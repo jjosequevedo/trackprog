@@ -17,6 +17,21 @@
         "trainingDays": "Training days"
     },
     "settings": {
-        "general": "General"
+        "general": "General",
+        "Sunday": "Sunday",
+        "Monday": "Monday",
+        "Tuesday": "Tuesday",
+        "Wednesday": "Wednesday",
+        "Thursday": "Thursday",
+        "Friday": "Friday",
+        "Saturday": "Saturday",
+        "selectDays": "Which days will be your training days?"
+    },
+    "theme": {
+        "menu": {
+            "home": "Home",
+            "settings": "Settings",
+            "profile": "Profile"
+        }
     }
 }

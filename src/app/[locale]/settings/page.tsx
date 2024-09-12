@@ -1,10 +1,14 @@
 'use client';
 
 import * as React from 'react';
-import { Box, Button, Tab, Tabs, TextField } from '@mui/material';
+import { Box, Button, Checkbox, FormControlLabel, FormGroup, FormLabel, Tab, Tabs, TextField } from '@mui/material';
 import DashboardTheme from '@/app/theme/DashboardTheme';
 import { useTranslations } from 'next-intl';
 import Grid from '@mui/material/Grid2';
+import dayjs from 'dayjs';
+import localeData from "dayjs/plugin/localeData";
+
+dayjs.extend(localeData);
 
 const Settings: React.FC<SettingsProps> = () => {
     const t = useTranslations('settings');
@@ -58,6 +62,8 @@ const Settings: React.FC<SettingsProps> = () => {
         // Handle form submission logic here
     };
 
+    const days = dayjs.weekdays();
+
     return (
         <DashboardTheme>
             <Box sx={{ width: '100%' }}>
@@ -72,40 +78,12 @@ const Settings: React.FC<SettingsProps> = () => {
                         <form onSubmit={handleSubmit}>
                             <Grid container spacing={2}>
                                 <Grid size={{ xs: 12 }}>
-                                    <TextField
-                                        fullWidth
-                                        label="Name"
-                                        name="name"
-                                        variant="outlined"
-                                        value={formData.name}
-                                        onChange={handleChangeInput}
-                                        required
-                                    />
-                                </Grid>
-                                <Grid size={{ xs: 12 }}>
-                                    <TextField
-                                        fullWidth
-                                        label="Email"
-                                        name="email"
-                                        variant="outlined"
-                                        type="email"
-                                        value={formData.email}
-                                        onChange={handleChangeInput}
-                                        required
-                                    />
-                                </Grid>
-                                <Grid size={{ xs: 12 }}>
-                                    <TextField
-                                        fullWidth
-                                        label="Message"
-                                        name="message"
-                                        variant="outlined"
-                                        multiline
-                                        rows={4}
-                                        value={formData.message}
-                                        onChange={handleChangeInput}
-                                        required
-                                    />
+                                <FormLabel component="label">{t('selectDays')}</FormLabel>
+                                    <FormGroup>
+                                        {
+                                            dayjs.weekdays().map((d, i) => <FormControlLabel key={i} control={<Checkbox />} label={t(d)} />)
+                                        }
+                                    </FormGroup>
                                 </Grid>
                                 <Grid size={{ xs: 12 }}>
                                     <Button type="submit" variant="contained" color="primary" fullWidth>

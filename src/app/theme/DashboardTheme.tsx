@@ -4,9 +4,10 @@ import { AppBar, BottomNavigation, BottomNavigationAction, Box, CssBaseline, Dra
 import { AccountCircle, Dashboard, Home, Settings } from "@mui/icons-material";
 import { useState } from "react";
 import { useTheme } from '@mui/material/styles';
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const DashboardTheme: React.FC<DashboardThemeProps> = ({ children }) => {
+  const t = useTranslations('theme');
   const locale = useLocale();
 
   const drawerWidth = 240;
@@ -32,12 +33,12 @@ const DashboardTheme: React.FC<DashboardThemeProps> = ({ children }) => {
         <Box sx={{ padding: '8px' }}>
           {/* Menu items can be placed here */}
           <Link href={`/${locale}/dashboard`}>
-            <Typography>Home</Typography>
+            <Typography>{t('menu.home')}</Typography>
           </Link>
           <Link href={`/${locale}/settings`}>
-            <Typography>Settings</Typography>
+            <Typography>{t('menu.settings')}</Typography>
           </Link>
-          <Typography>Profile</Typography>
+          <Typography>{t('menu.profile')}</Typography>
         </Box>
       </Box>
     </div>
@@ -110,10 +111,9 @@ const DashboardTheme: React.FC<DashboardThemeProps> = ({ children }) => {
             setBottomNavValue(newValue);
           }}
         >
-          <BottomNavigationAction label="Home" icon={<Home />} href={`/${locale}/dashboard`} onClick={onClickMenuItem} />
-          <BottomNavigationAction label="Dashboard" icon={<Dashboard />} />
-          <BottomNavigationAction label="Settings" href={`/${locale}/settings`} icon={<Settings />} />
-          <BottomNavigationAction label="Profile" icon={<AccountCircle />} />
+          <BottomNavigationAction label={t('menu.home')} icon={<Home />} href={`/${locale}/dashboard`} onClick={onClickMenuItem} />
+          <BottomNavigationAction label={t('menu.settings')} href={`/${locale}/settings`} icon={<Settings />} />
+          <BottomNavigationAction label={t('menu.profile')} icon={<AccountCircle />} />
         </BottomNavigation>
       )}
     </Box>
