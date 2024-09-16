@@ -41,7 +41,7 @@ const a11yProps = (index: number) => {
 
 const Days = () => {
   const t = useTranslations('dashboard');
-  const [tabs, setTabs] = React.useState<string[]>([dayjs().format('Y-m-DD')]); // Array of date strings
+  const [tabs, setTabs] = React.useState<string[]>([dayjs().format('YYYY-MM-DD')]); // Array of date strings
   const [selectedTab, setSelectedTab] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -49,9 +49,9 @@ const Days = () => {
   };
 
   const addTab = (daysToAdd: number) => {
-    const newDate = dayjs(tabs[selectedTab]).add(daysToAdd, 'day').format('Y-m-DD');
+    const newDate = dayjs(tabs[selectedTab]).add(daysToAdd, 'day').format('YYYY-MM-DD');
     if (!tabs.includes(newDate)) {
-      setTabs((prev) => [...prev, newDate]/*.sort((a, b) => dayjs.min([dayjs(), dayjs(a), dayjs(b)]))*/);
+      setTabs((prev) => [...prev, newDate].sort((a, b) => dayjs(a).isBefore(dayjs(b)) ? -1 : 1));
     }
     setSelectedTab(tabs.indexOf(newDate) !== -1 ? tabs.indexOf(newDate) : tabs.length);
   };
