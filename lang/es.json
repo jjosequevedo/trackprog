@@ -13,7 +13,9 @@
         "Thursday": "Jueves",
         "Friday": "Viernes",
         "Saturday": "Sábado",
-        "trainingDays": "Días de entrenamiento"
+        "trainingDays": "Días de entrenamiento",
+        "previousDay": "Día anterior",
+        "nextDay": "Próximo día"
     },
     "settings": {
         "general": "General",

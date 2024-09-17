@@ -35,10 +35,10 @@ const Days = () => {
   return (
     <Box sx={{ width: '100%', mt: 3 }}>
       <Button onClick={moveBack} variant="contained" sx={{ mr: 2 }}>
-        Previous Day
+        {t('previousDay')}
       </Button>
       <Button onClick={moveForward} variant="contained">
-        Next Day
+        {t('nextDay')}
       </Button>
 
       <Tabs value={selectedTab} onChange={handleChange} variant="scrollable" scrollButtons="auto">
