@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl';
 import Grid from '@mui/material/Grid2';
 import dayjs from 'dayjs';
 import localeData from "dayjs/plugin/localeData";
+import { SettingsProps, TabPanelProps } from '@/app/interfaces';
 
 dayjs.extend(localeData);
 

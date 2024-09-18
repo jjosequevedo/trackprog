@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/navigation';
 import Grid from '@mui/material/Grid2';
 import { useTranslations } from 'next-intl';
+import { FormDataInterface } from '../interfaces';
 
 export default function Login() {
     const t = useTranslations('login');

@@ -1,26 +1,39 @@
-interface RootLayoutProps {
+import { GridRowModesModel, GridRowsProp } from "@mui/x-data-grid";
+
+export interface RootLayoutProps {
     children?: React.ReactNode;
     params: { 
         locale?: string; 
     }
 }
 
-interface FormDataInterface {
+export interface FormDataInterface {
     email: string;
     password: string;
 }
 
-interface TabPanelProps {
+export interface TabPanelProps {
     children?: React.ReactNode;
     index: number;
     value: number;
 }
 
-interface DashboardThemeProps {
+export interface DashboardThemeProps {
     children?: React.ReactNode;
     locale?: string;
 }
 
-interface DashboardProps { }
+export interface DashboardProps { }
 
-interface SettingsProps { }
+export interface SettingsProps { }
+
+export interface EditToolbarProps {
+  setRows: (newRows: (oldRows: GridRowsProp) => GridRowsProp) => void;
+  setRowModesModel: (
+    newModel: (oldModel: GridRowModesModel) => GridRowModesModel,
+  ) => void;
+}
+
+export interface ButtonStartProps {
+    onClickFn: Function;
+}

@@ -26,6 +26,7 @@ import {
   randomId,
   randomArrayItem,
 } from '@mui/x-data-grid-generator';
+import { EditToolbarProps } from '../interfaces';
 
 const roles = ['Market', 'Finance', 'Development'];
 const randomRole = () => {
@@ -40,42 +41,7 @@ const initialRows: GridRowsProp = [
     joinDate: randomCreatedDate(),
     role: randomRole(),
   },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 36,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 19,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 28,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 23,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
 ];
-
-interface EditToolbarProps {
-  setRows: (newRows: (oldRows: GridRowsProp) => GridRowsProp) => void;
-  setRowModesModel: (
-    newModel: (oldModel: GridRowModesModel) => GridRowModesModel,
-  ) => void;
-}
 
 function EditToolbar(props: EditToolbarProps) {
   const { setRows, setRowModesModel } = props;
@@ -92,7 +58,7 @@ function EditToolbar(props: EditToolbarProps) {
   return (
     <GridToolbarContainer>
       <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
-        Add record
+        Add
       </Button>
     </GridToolbarContainer>
   );
@@ -143,7 +109,12 @@ export default function GridEditable() {
   };
 
   const columns: GridColDef[] = [
-    { field: 'name', headerName: 'Name', width: 180, editable: true },
+    { 
+      field: 'name', 
+      headerName: 'Name', 
+      width: 180, 
+      editable: true 
+    },
     {
       field: 'age',
       headerName: 'Age',
