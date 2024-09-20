@@ -1,8 +1,10 @@
 import * as React from 'react';
+import * as Yup from 'yup';
 import { Box, Button, Step, StepLabel, Stepper, Typography } from '@mui/material';
 import { Send } from '@mui/icons-material';
 import TrainingOneForm from './forms/TrainingOneForm';
 import TrainingTwoForm from './forms/TrainingTwoForm';
+import { Form, Formik } from 'formik';
 
 const steps = [
     "Let's start!",
@@ -27,6 +29,22 @@ const Wizard: React.FC = () => {
         setActiveStep(activeStep + 1);
     };
 
+      // Validation schemas for each step
+  const validationSchemas = [
+    Yup.object(),
+    Yup.object({
+      firstName: Yup.string().required('First name is required'),
+      lastName: Yup.string().required('Last name is required'),
+      email: Yup.string().email('Invalid email').required('Email is required'),
+    }),
+    Yup.object(),
+    Yup.object(),
+  ];
+
+    const initialValues = {};
+
+    const submitTraining = () => { };
+
     return (
         <Box sx={{ width: '100%' }}>
             <Stepper activeStep={activeStep} alternativeLabel>
@@ -36,7 +54,16 @@ const Wizard: React.FC = () => {
                     </Step>
                 ))}
             </Stepper>
-            {currentCmp(activeStep)}
+            <Formik
+                initialValues={initialValues}
+                validationSchema={validationSchemas}
+                onSubmit={submitTraining}>
+                {() => (
+                    <Form>
+                        {currentCmp(activeStep)}
+                    </Form>
+                )}
+            </Formik>
             {
                 activeStep > 0
                 && activeStep < steps.length - 1

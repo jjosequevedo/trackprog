@@ -5,6 +5,7 @@ import { AccountCircle, Dashboard, Home, Settings } from "@mui/icons-material";
 import { useState } from "react";
 import { useTheme } from '@mui/material/styles';
 import { useLocale, useTranslations } from "next-intl";
+import { DashboardThemeProps } from "../interfaces";
 
 const DashboardTheme: React.FC<DashboardThemeProps> = ({ children }) => {
   const t = useTranslations('theme');
