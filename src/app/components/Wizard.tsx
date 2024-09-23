@@ -15,13 +15,23 @@ const steps = [
 
 const Wizard: React.FC = () => {
     const [activeStep, setActiveStep] = React.useState(0);
+    const [trainingData, setTrainingData] = React.useState<any[]>([]);  // State to hold training data
+
+    // Callback to update training data from TrainingOneForm
+    const handleTrainingDataChange = (data: any[]) => {
+        setTrainingData(data);
+    };
 
     const currentCmp = (step: number) => {
         switch (step) {
-            case 0: return <Button variant='contained' endIcon={<Send />} onClick={nextStep}>Start!</Button>;
-            case 1: return <TrainingOneForm />;
-            case 2: return <TrainingTwoForm />;
-            case 3: return <Typography>Awesome! We're done for today</Typography>;
+            case 0: 
+                return <Button variant='contained' endIcon={<Send />} onClick={nextStep}>Start!</Button>;
+            case 1: 
+                return <TrainingOneForm onDataChange={handleTrainingDataChange} />;  // Pass data handler
+            case 2: 
+                return <TrainingTwoForm trainingData={trainingData} />;  // Pass collected data to TrainingTwoForm
+            case 3: 
+                return <Typography>Awesome! We're done for today</Typography>;
         }
     };
 
@@ -29,17 +39,17 @@ const Wizard: React.FC = () => {
         setActiveStep(activeStep + 1);
     };
 
-      // Validation schemas for each step
-  const validationSchemas = [
-    Yup.object(),
-    Yup.object({
-      firstName: Yup.string().required('First name is required'),
-      lastName: Yup.string().required('Last name is required'),
-      email: Yup.string().email('Invalid email').required('Email is required'),
-    }),
-    Yup.object(),
-    Yup.object(),
-  ];
+    // Validation schemas for each step
+    const validationSchemas = [
+        Yup.object(),
+        Yup.object({
+            firstName: Yup.string().required('First name is required'),
+            lastName: Yup.string().required('Last name is required'),
+            email: Yup.string().email('Invalid email').required('Email is required'),
+        }),
+        Yup.object(),
+        Yup.object(),
+    ];
 
     const initialValues = {};
 

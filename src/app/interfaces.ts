@@ -37,3 +37,13 @@ export interface EditToolbarProps {
 export interface ButtonStartProps {
     onClickFn: Function;
 }
+
+export interface ITrainingData {
+    exercise: string;
+    sets: number;
+    repetitions: number;
+}
+
+export interface TrainingTwoFormProps {
+    trainingData: Array<ITrainingData>;
+}
