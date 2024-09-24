@@ -45,6 +45,13 @@ const TrainingOneForm: React.FC<{ onDataChange: (data: any) => void }> = ({ onDa
                         value={row.sets}
                         onChange={(e) => handleInputChange(index, 'sets', e.target.value)}
                         sx={{ mr: 2 }}
+                        inputMode="numeric"
+                        slotProps={{
+                            htmlInput: {
+                                min: 1,
+                                max: 8
+                            }
+                        }}
                     />
                     <TextField
                         id={`training[${index}][repetitions]`}
@@ -55,6 +62,12 @@ const TrainingOneForm: React.FC<{ onDataChange: (data: any) => void }> = ({ onDa
                         value={row.repetitions}
                         onChange={(e) => handleInputChange(index, 'repetitions', e.target.value)}
                         sx={{ mr: 2 }}
+                        inputMode="numeric"
+                        slotProps={{
+                            htmlInput: {
+                                min: 1
+                            }
+                        }}
                     />
                     <Button
                         onClick={() => handleRemoveRow(index)}
