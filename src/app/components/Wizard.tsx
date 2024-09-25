@@ -43,9 +43,9 @@ const Wizard: React.FC = () => {
     const validationSchemas = [
         Yup.object(),
         Yup.object({
-            firstName: Yup.string().required('First name is required'),
-            lastName: Yup.string().required('Last name is required'),
-            email: Yup.string().email('Invalid email').required('Email is required'),
+            exercise: Yup.string().required('Exercise is required'),
+            sets: Yup.number().required('Sets are required'),
+            repetitions: Yup.number().required('Repetitions is required'),
         }),
         Yup.object(),
         Yup.object(),
