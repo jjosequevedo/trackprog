@@ -1,5 +1,5 @@
-import { Add, Delete } from "@mui/icons-material";
-import { Box, Button, TextField } from "@mui/material";
+import { Add, Delete, Info, Label } from "@mui/icons-material";
+import { Box, Button, Checkbox, IconButton, TextField, Tooltip } from "@mui/material";
 import React from "react";
 
 const TrainingOneForm: React.FC<{ onDataChange: (data: any) => void }> = ({ onDataChange }) => {
@@ -69,6 +69,12 @@ const TrainingOneForm: React.FC<{ onDataChange: (data: any) => void }> = ({ onDa
                             }
                         }}
                     />
+                    <Checkbox aria-label="Separate repetitions" />
+                    <Tooltip title="If you clicked this option, it will appear some fields to define what it would be your goals in each repetitions." arrow>
+                        <IconButton>
+                            <Info />
+                        </IconButton>
+                    </Tooltip>
                     <Button
                         onClick={() => handleRemoveRow(index)}
                         startIcon={<Delete />}
