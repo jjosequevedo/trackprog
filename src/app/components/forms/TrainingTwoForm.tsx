@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TrainingTwoFormProps } from "@/app/interfaces";
-import { Accordion, AccordionDetails, AccordionSummary, Box, TextField, Button, Link } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Box, TextField, Button, Link, Tooltip } from "@mui/material";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';  // Completed icon
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';  // Mark as Done icon
 
@@ -79,16 +79,18 @@ const TrainingTwoForm: React.FC<TrainingTwoFormProps> = ({ trainingData }) => {
                                                     }
                                                 }}
                                             />
-                                            <Link
-                                                color={completedSets[index]?.[key] ? "success" : "primary"}
-                                                onClick={() => handleToggleComplete(index, key)}
-                                            >
-                                                {
-                                                    completedSets[index]?.[key]
-                                                        ? <CheckCircleIcon />  // Show check icon if completed
-                                                        : <RadioButtonUncheckedIcon />  // Show circle icon if not completed
-                                                }
-                                            </Link>
+                                            <Tooltip placement="right" title="Done!" arrow>
+                                                <Link
+                                                    color={completedSets[index]?.[key] ? "success" : "primary"}
+                                                    onClick={() => handleToggleComplete(index, key)}
+                                                >
+                                                    {
+                                                        completedSets[index]?.[key]
+                                                            ? <CheckCircleIcon />  // Show check icon if completed
+                                                            : <RadioButtonUncheckedIcon />  // Show circle icon if not completed
+                                                    }
+                                                </Link>
+                                            </Tooltip>
                                         </Box>
                                     ))
                                 }

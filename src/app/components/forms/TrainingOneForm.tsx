@@ -53,7 +53,7 @@ const TrainingOneForm: React.FC<{ onDataChange: (data: any) => void }> = ({ onDa
 
             {rows.map((row, index) => (
                 <Box key={index} sx={{ display: 'flex', flexDirection: 'column', mb: 2 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Box sx={{ display: 'flex', alignItems: !row.customReps ? 'center' : 'flex-start' }}>
                         <TextField
                             id={`training[${index}][exercise]`}
                             name={`training[${index}][exercise]`}
@@ -98,12 +98,35 @@ const TrainingOneForm: React.FC<{ onDataChange: (data: any) => void }> = ({ onDa
                                 }}
                             />
                         }
+
+                        {row.customReps && (
+                            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                                {Array.from({ length: row.sets }).map((_, setIndex) => (
+                                    <TextField
+                                        key={setIndex}
+                                        label={`Set ${setIndex + 1} Repetitions`}
+                                        variant="outlined"
+                                        type="number"
+                                        value={row.repetitionsPerSet[setIndex]}
+                                        onChange={(e) => handleRepetitionsPerSetChange(index, setIndex, e.target.value)}
+                                        sx={{ mt: setIndex > 0 ? 2 : 0 }}
+                                        inputMode="numeric"
+                                        slotProps={{
+                                            htmlInput: {
+                                                min: 1
+                                            }
+                                        }}
+                                    />
+                                ))}
+                            </Box>
+                        )}
+
                         <Checkbox
                             checked={row.customReps}
                             onChange={(e) => handleCustomRepsChange(index, e.target.checked)}
                             aria-label="Separate repetitions"
                         />
-                        <Tooltip title="Click to define custom repetitions per set." arrow>
+                        <Tooltip title="Click to define custom repetitions per set." arrow placement="top">
                             <IconButton>
                                 <Info />
                             </IconButton>
@@ -116,28 +139,6 @@ const TrainingOneForm: React.FC<{ onDataChange: (data: any) => void }> = ({ onDa
                             Remove
                         </Button>
                     </Box>
-
-                    {row.customReps && (
-                        <Box sx={{ ml: 4 }}>
-                            {Array.from({ length: row.sets }).map((_, setIndex) => (
-                                <TextField
-                                    key={setIndex}
-                                    label={`Set ${setIndex + 1} Repetitions`}
-                                    variant="outlined"
-                                    type="number"
-                                    value={row.repetitionsPerSet[setIndex]}
-                                    onChange={(e) => handleRepetitionsPerSetChange(index, setIndex, e.target.value)}
-                                    sx={{ mr: 2, mt: 1 }}
-                                    inputMode="numeric"
-                                    slotProps={{
-                                        htmlInput: {
-                                            min: 1
-                                        }
-                                    }}
-                                />
-                            ))}
-                        </Box>
-                    )}
                 </Box>
             ))}
         </Box>
