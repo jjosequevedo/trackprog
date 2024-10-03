@@ -33,7 +33,8 @@
         "menu": {
             "home": "Home",
             "settings": "Settings",
-            "profile": "Profile"
+            "profile": "Profile",
+            "reports": "Reports"
         }
     }
 }

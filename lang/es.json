@@ -32,7 +32,8 @@
         "menu": {
             "home": "Inicio",
             "settings": "Ajustes",
-            "profile": "Perfil"
+            "profile": "Perfil",
+            "reports": "Reportes"
         }
     }
 }

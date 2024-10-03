@@ -2,8 +2,8 @@ import { GridRowModesModel, GridRowsProp } from "@mui/x-data-grid";
 
 export interface RootLayoutProps {
     children?: React.ReactNode;
-    params: { 
-        locale?: string; 
+    params: {
+        locale?: string;
     }
 }
 
@@ -28,10 +28,10 @@ export interface DashboardProps { }
 export interface SettingsProps { }
 
 export interface EditToolbarProps {
-  setRows: (newRows: (oldRows: GridRowsProp) => GridRowsProp) => void;
-  setRowModesModel: (
-    newModel: (oldModel: GridRowModesModel) => GridRowModesModel,
-  ) => void;
+    setRows: (newRows: (oldRows: GridRowsProp) => GridRowsProp) => void;
+    setRowModesModel: (
+        newModel: (oldModel: GridRowModesModel) => GridRowModesModel,
+    ) => void;
 }
 
 export interface ButtonStartProps {
@@ -46,4 +46,10 @@ export interface ITrainingData {
 
 export interface TrainingTwoFormProps {
     trainingData: Array<ITrainingData>;
+}
+
+export interface Report {
+    id: number;
+    title: string;
+    description: string;
 }

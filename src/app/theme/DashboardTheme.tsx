@@ -1,7 +1,7 @@
 'use client';
 
 import { AppBar, BottomNavigation, BottomNavigationAction, Box, CssBaseline, Drawer, Link, Toolbar, Typography, useMediaQuery } from "@mui/material";
-import { AccountCircle, Dashboard, Home, Settings } from "@mui/icons-material";
+import { AccountCircle, Dashboard, Home, ReportProblem, Settings } from "@mui/icons-material";
 import { useState } from "react";
 import { useTheme } from '@mui/material/styles';
 import { useLocale, useTranslations } from "next-intl";
@@ -39,7 +39,10 @@ const DashboardTheme: React.FC<DashboardThemeProps> = ({ children }) => {
           <Link href={`/${locale}/settings`}>
             <Typography>{t('menu.settings')}</Typography>
           </Link>
-          <Typography>{t('menu.profile')}</Typography>
+          <Link href={`/${locale}/reports`}>
+            <Typography>{t('menu.reports')}</Typography>
+          </Link>
+          {/* <Typography>{t('menu.profile')}</Typography> */}
         </Box>
       </Box>
     </div>
@@ -115,6 +118,7 @@ const DashboardTheme: React.FC<DashboardThemeProps> = ({ children }) => {
           <BottomNavigationAction label={t('menu.home')} icon={<Home />} href={`/${locale}/dashboard`} onClick={onClickMenuItem} />
           <BottomNavigationAction label={t('menu.settings')} href={`/${locale}/settings`} icon={<Settings />} />
           <BottomNavigationAction label={t('menu.profile')} icon={<AccountCircle />} />
+          <BottomNavigationAction label={t('menu.reports')} icon={<ReportProblem />} />
         </BottomNavigation>
       )}
     </Box>
