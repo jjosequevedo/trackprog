@@ -42,7 +42,9 @@ const DashboardTheme: React.FC<DashboardThemeProps> = ({ children }) => {
           <Link href={`/${locale}/reports`}>
             <Typography>{t('menu.reports')}</Typography>
           </Link>
-          {/* <Typography>{t('menu.profile')}</Typography> */}
+          <Link href={`/${locale}/profile`}>
+            <Typography>{t('menu.profile')}</Typography>
+          </Link>
         </Box>
       </Box>
     </div>
@@ -117,8 +119,8 @@ const DashboardTheme: React.FC<DashboardThemeProps> = ({ children }) => {
         >
           <BottomNavigationAction label={t('menu.home')} icon={<Home />} href={`/${locale}/dashboard`} onClick={onClickMenuItem} />
           <BottomNavigationAction label={t('menu.settings')} href={`/${locale}/settings`} icon={<Settings />} />
-          <BottomNavigationAction label={t('menu.profile')} icon={<AccountCircle />} />
-          <BottomNavigationAction label={t('menu.reports')} icon={<ReportProblem />} />
+          <BottomNavigationAction label={t('menu.profile')} href={`/${locale}/profile`}  icon={<AccountCircle />} />
+          <BottomNavigationAction label={t('menu.reports')} href={`/${locale}/reports`}  icon={<ReportProblem />} />
         </BottomNavigation>
       )}
     </Box>
