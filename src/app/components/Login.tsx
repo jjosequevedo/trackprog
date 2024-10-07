@@ -7,14 +7,17 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/navigation';
-import Grid from '@mui/material/Grid2';
+import FormControl from '@mui/material/FormControl';
+import FormHelperText from '@mui/material/FormHelperText';
+import Alert from '@mui/material/Alert';
 import { useTranslations } from 'next-intl';
 import { FormDataInterface } from '../interfaces';
+import Grid from '@mui/material/Grid2';
 
 export default function Login() {
     const t = useTranslations('login');
-
     const router = useRouter();
+    const [error, setError] = React.useState("");
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -24,11 +27,13 @@ export default function Login() {
             password: data.get('password') as string,
         };
 
-        // Simulate API login call (replace this with your actual API logic)
-        console.log(formData);
-
-        // If login is successful, redirect to the dashboard
-        router.push('/en/dashboard');
+        // Simulate API login call with a fake success condition
+        if (formData.email === 'example@email.com' && formData.password === 'password123') {
+            setError(""); // Clear any previous errors
+            router.push('/en/dashboard'); // Redirect on successful login
+        } else {
+            setError(t('invalidCredentials')); // Set error message
+        }
     };
 
     return (
@@ -48,6 +53,9 @@ export default function Login() {
                 {t('signIn')}
             </Typography>
             <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                {error && (
+                    <Alert severity="error">{error}</Alert>
+                )}
                 <TextField
                     margin="normal"
                     required
@@ -57,6 +65,7 @@ export default function Login() {
                     name="email"
                     autoComplete="email"
                     autoFocus
+                    error={!!error} // Set error state based on error message
                 />
                 <TextField
                     margin="normal"
@@ -67,13 +76,9 @@ export default function Login() {
                     type="password"
                     id="password"
                     autoComplete="current-password"
+                    error={!!error} // Set error state based on error message
                 />
-                <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
-                >
+                <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
                     {t('signIn')}
                 </Button>
                 <Grid container spacing={2}>

@@ -4,7 +4,8 @@
         "signIn": "Sign in",
         "emailAddress": "Email Address",
         "password": "Password",
-        "forgotPassword": "Forgot password?"
+        "forgotPassword": "Forgot password?",
+        "invalidCredentials": "Invalid email or password."
     },
     "dashboard": {
         "Sunday": "Sunday",

@@ -3,7 +3,8 @@
         "signIn": "Iniciar sesión",
         "emailAddress": "Correo electrónico",
         "password": "Contraseña",
-        "forgotPassword": "¿Olvidaste la contraseña?"
+        "forgotPassword": "¿Olvidaste la contraseña?",
+        "invalidCredentials": "Email o contraseña inválidos."
     },
     "dashboard": {
         "Sunday": "Domingo",
