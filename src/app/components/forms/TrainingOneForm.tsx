@@ -4,11 +4,27 @@ import React from "react";
 
 const TrainingOneForm: React.FC<{ onDataChange: (data: any) => void }> = ({ onDataChange }) => {
     const [rows, setRows] = React.useState([
-        { exercise: '', sets: 4, repetitions: 12, customReps: false, repetitionsPerSet: [12, 12, 12, 12] }
+        {
+            exercise: '',
+            sets: 4,
+            repetitions: 12,
+            minReps: 8,
+            maxReps: 12,
+            customReps: false,
+            repetitionsPerSet: [{ reps: 12, minReps: 8, maxReps: 12 }]
+        }
     ]);
 
     const handleAddRow = () => {
-        setRows([...rows, { exercise: '', sets: 4, repetitions: 12, customReps: false, repetitionsPerSet: [12, 12, 12, 12] }]);
+        setRows([...rows, {
+            exercise: '',
+            sets: 4,
+            repetitions: 12,
+            minReps: 8,
+            maxReps: 12,
+            customReps: false,
+            repetitionsPerSet: [{ reps: 12, minReps: 8, maxReps: 12 }]
+        }]);
     };
 
     const handleRemoveRow = (index: number) => {
@@ -28,21 +44,31 @@ const TrainingOneForm: React.FC<{ onDataChange: (data: any) => void }> = ({ onDa
         const updatedRows = [...rows];
         updatedRows[index].customReps = checked;
 
-        // If enabling custom reps, initialize with the same repetition for each set
+        // Initialize custom repetitions with min/max for each set when enabling custom reps
         if (checked) {
-            updatedRows[index].repetitionsPerSet = Array(updatedRows[index].sets).fill(updatedRows[index].repetitions);
+            updatedRows[index].repetitionsPerSet = Array(updatedRows[index].sets).fill({
+                reps: updatedRows[index].repetitions,
+                minReps: updatedRows[index].minReps,
+                maxReps: updatedRows[index].maxReps
+            });
         } else {
-            // Reset to the default single repetition field
-            updatedRows[index].repetitionsPerSet = [updatedRows[index].repetitions];
+            updatedRows[index].repetitionsPerSet = [{
+                reps: updatedRows[index].repetitions,
+                minReps: updatedRows[index].minReps,
+                maxReps: updatedRows[index].maxReps
+            }];
         }
 
         setRows(updatedRows);
         onDataChange(updatedRows);
     };
 
-    const handleRepetitionsPerSetChange = (rowIdx: number, setIdx: number, value: string | number) => {
+    const handleRepetitionsPerSetChange = (rowIdx: number, setIdx: number, field: string, value: string | number) => {
         const updatedRows = [...rows];
-        updatedRows[rowIdx].repetitionsPerSet[setIdx] = Number(value);
+        updatedRows[rowIdx].repetitionsPerSet[setIdx] = {
+            ...updatedRows[rowIdx].repetitionsPerSet[setIdx],
+            [field]: Number(value)
+        };
         setRows(updatedRows);
         onDataChange(updatedRows);
     };
@@ -80,43 +106,76 @@ const TrainingOneForm: React.FC<{ onDataChange: (data: any) => void }> = ({ onDa
                                 }
                             }}
                         />
-                        {
-                            !row.customReps && <TextField
-                                id={`training[${index}][repetitions]`}
-                                name={`training[${index}][repetitions]`}
-                                label="Repetitions"
-                                variant="outlined"
-                                type="number"
-                                value={row.repetitions}
-                                onChange={(e) => handleInputChange(index, 'repetitions', e.target.value)}
-                                sx={{ mr: 2 }}
-                                inputMode="numeric"
-                                slotProps={{
-                                    htmlInput: {
-                                        min: 1
-                                    }
-                                }}
-                            />
-                        }
+                        {!row.customReps && (
+                            <>
+                                <TextField
+                                    id={`training[${index}][minReps]`}
+                                    name={`training[${index}][minReps]`}
+                                    label="Min Reps"
+                                    variant="outlined"
+                                    type="number"
+                                    value={row.minReps}
+                                    onChange={(e) => handleInputChange(index, 'minReps', e.target.value)}
+                                    sx={{ mr: 2 }}
+                                    inputMode="numeric"
+                                    slotProps={{
+                                        htmlInput: {
+                                            min: 1
+                                        }
+                                    }}
+                                />
+                                <TextField
+                                    id={`training[${index}][maxReps]`}
+                                    name={`training[${index}][maxReps]`}
+                                    label="Max Reps"
+                                    variant="outlined"
+                                    type="number"
+                                    value={row.maxReps}
+                                    onChange={(e) => handleInputChange(index, 'maxReps', e.target.value)}
+                                    sx={{ mr: 2 }}
+                                    inputMode="numeric"
+                                    slotProps={{
+                                        htmlInput: {
+                                            min: row.minReps,  // Ensure max reps is greater than or equal to min reps
+                                        }
+                                    }}
+                                />
+                            </>
+                        )}
 
                         {row.customReps && (
                             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                 {Array.from({ length: row.sets }).map((_, setIndex) => (
-                                    <TextField
-                                        key={setIndex}
-                                        label={`Set ${setIndex + 1} Repetitions`}
-                                        variant="outlined"
-                                        type="number"
-                                        value={row.repetitionsPerSet[setIndex]}
-                                        onChange={(e) => handleRepetitionsPerSetChange(index, setIndex, e.target.value)}
-                                        sx={{ mt: setIndex > 0 ? 2 : 0 }}
-                                        inputMode="numeric"
-                                        slotProps={{
-                                            htmlInput: {
-                                                min: 1
-                                            }
-                                        }}
-                                    />
+                                    <Box key={setIndex} sx={{ display: 'flex', mt: setIndex === 0 ? 0 : 2 }}>
+                                        <TextField
+                                            label={`Set ${setIndex + 1} Min Reps`}
+                                            variant="outlined"
+                                            type="number"
+                                            value={row.repetitionsPerSet[setIndex].minReps}
+                                            onChange={(e) => handleRepetitionsPerSetChange(index, setIndex, 'minReps', e.target.value)}
+                                            sx={{ mr: 2 }}
+                                            inputMode="numeric"
+                                            slotProps={{
+                                                htmlInput: {
+                                                    min: 1
+                                                }
+                                            }}
+                                        />
+                                        <TextField
+                                            label={`Set ${setIndex + 1} Max Reps`}
+                                            variant="outlined"
+                                            type="number"
+                                            value={row.repetitionsPerSet[setIndex].maxReps}
+                                            onChange={(e) => handleRepetitionsPerSetChange(index, setIndex, 'maxReps', e.target.value)}
+                                            sx={{ mr: 2 }}
+                                            inputMode="numeric"
+                                            slotProps={{
+                                                htmlInput: {
+                                                    min: row.repetitionsPerSet[setIndex].minReps  // Ensure max reps >= min reps
+                                                }
+                                            }}
+                                        />
+                                    </Box>
                                 ))}
                             </Box>
                         )}
