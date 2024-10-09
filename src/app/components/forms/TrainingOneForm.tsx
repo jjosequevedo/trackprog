@@ -11,7 +11,7 @@ const TrainingOneForm: React.FC<{ onDataChange: (data: any) => void }> = ({ onDa
             minReps: 8,
             maxReps: 12,
             customReps: false,
-            repetitionsPerSet: [{ reps: 12, minReps: 8, maxReps: 12 }]
+            repetitionsPerSet: [{ minReps: 8, maxReps: 12 }]
         }
     ]);
 
@@ -23,7 +23,7 @@ const TrainingOneForm: React.FC<{ onDataChange: (data: any) => void }> = ({ onDa
             minReps: 8,
             maxReps: 12,
             customReps: false,
-            repetitionsPerSet: [{ reps: 12, minReps: 8, maxReps: 12 }]
+            repetitionsPerSet: [{ minReps: 8, maxReps: 12 }]
         }]);
     };
 
@@ -47,13 +47,11 @@ const TrainingOneForm: React.FC<{ onDataChange: (data: any) => void }> = ({ onDa
         // Initialize custom repetitions with min/max for each set when enabling custom reps
         if (checked) {
             updatedRows[index].repetitionsPerSet = Array(updatedRows[index].sets).fill({
-                reps: updatedRows[index].repetitions,
                 minReps: updatedRows[index].minReps,
                 maxReps: updatedRows[index].maxReps
             });
         } else {
             updatedRows[index].repetitionsPerSet = [{
-                reps: updatedRows[index].repetitions,
                 minReps: updatedRows[index].minReps,
                 maxReps: updatedRows[index].maxReps
             }];
