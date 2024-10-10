@@ -34,7 +34,8 @@
             "home": "Inicio",
             "settings": "Ajustes",
             "profile": "Perfil",
-            "reports": "Reportes"
+            "reports": "Reportes",
+            "logout": "Cerrar sesión"
         }
     }
 }

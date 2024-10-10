@@ -24,13 +24,13 @@ const Wizard: React.FC = () => {
 
     const currentCmp = (step: number) => {
         switch (step) {
-            case 0: 
+            case 0:
                 return <Button variant='contained' endIcon={<Send />} onClick={nextStep}>Start!</Button>;
-            case 1: 
+            case 1:
                 return <TrainingOneForm onDataChange={handleTrainingDataChange} />;  // Pass data handler
-            case 2: 
+            case 2:
                 return <TrainingTwoForm trainingData={trainingData} />;  // Pass collected data to TrainingTwoForm
-            case 3: 
+            case 3:
                 return <Typography>Awesome! We're done for today</Typography>;
         }
     };
@@ -64,21 +64,25 @@ const Wizard: React.FC = () => {
                     </Step>
                 ))}
             </Stepper>
-            <Formik
-                initialValues={initialValues}
-                validationSchema={validationSchemas}
-                onSubmit={submitTraining}>
-                {() => (
-                    <Form>
-                        {currentCmp(activeStep)}
-                    </Form>
-                )}
-            </Formik>
-            {
-                activeStep > 0
-                && activeStep < steps.length - 1
-                && <Button variant='contained' endIcon={<Send />} onClick={nextStep}>Continue</Button>
-            }
+            <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }} my={3}>
+                    <Formik
+                        initialValues={initialValues}
+                        validationSchema={validationSchemas}
+                        onSubmit={submitTraining}>
+                        {() => (
+                            <Form>
+                                {currentCmp(activeStep)}
+                            </Form>
+                        )}
+                    </Formik>
+                    {
+                        activeStep > 0
+                        && activeStep < steps.length - 1
+                        && <Button variant='contained' endIcon={<Send />} onClick={nextStep}>Continue</Button>
+                    }
+                </Box>
+            </Box>
         </Box>
     );
 };

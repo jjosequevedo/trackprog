@@ -35,7 +35,8 @@
             "home": "Home",
             "settings": "Settings",
             "profile": "Profile",
-            "reports": "Reports"
+            "reports": "Reports",
+            "logout": "Logout"
         }
     }
 }
