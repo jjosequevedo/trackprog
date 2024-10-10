@@ -149,7 +149,7 @@ const TrainingOneForm: React.FC<{ onDataChange: (data: any) => void }> = ({ onDa
                                             label={`Set ${setIndex + 1} Min Reps`}
                                             variant="outlined"
                                             type="number"
-                                            value={row.repetitionsPerSet[setIndex].minReps}
+                                            value={row.repetitionsPerSet[setIndex]?.minReps || 8}
                                             onChange={(e) => handleRepetitionsPerSetChange(index, setIndex, 'minReps', e.target.value)}
                                             sx={{ mr: 2 }}
                                             inputMode="numeric"
@@ -163,13 +163,13 @@ const TrainingOneForm: React.FC<{ onDataChange: (data: any) => void }> = ({ onDa
                                             label={`Set ${setIndex + 1} Max Reps`}
                                             variant="outlined"
                                             type="number"
-                                            value={row.repetitionsPerSet[setIndex].maxReps}
+                                            value={row.repetitionsPerSet[setIndex]?.maxReps || 12}
                                             onChange={(e) => handleRepetitionsPerSetChange(index, setIndex, 'maxReps', e.target.value)}
                                             sx={{ mr: 2 }}
                                             inputMode="numeric"
                                             slotProps={{
                                                 htmlInput: {
-                                                    min: row.repetitionsPerSet[setIndex].minReps  // Ensure max reps >= min reps
+                                                    min: row.repetitionsPerSet[setIndex]?.minReps  // Ensure max reps >= min reps
                                                 }
                                             }}
                                         />
