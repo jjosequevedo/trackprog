@@ -37,5 +37,8 @@
             "reports": "Reportes",
             "logout": "Cerrar sesión"
         }
+    },
+    "trainingForm": {
+        "exercise": "Ejercicio"
     }
 }

@@ -1,8 +1,11 @@
 import { Add, Delete, Info } from "@mui/icons-material";
 import { Box, Button, Checkbox, IconButton, TextField, Tooltip } from "@mui/material";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 const TrainingOneForm: React.FC<{ onDataChange: (data: any) => void }> = ({ onDataChange }) => {
+    const t = useTranslations('trainingForm');
+
     const [rows, setRows] = React.useState([
         {
             exercise: '',
@@ -81,7 +84,7 @@ const TrainingOneForm: React.FC<{ onDataChange: (data: any) => void }> = ({ onDa
                         <TextField
                             id={`training[${index}][exercise]`}
                             name={`training[${index}][exercise]`}
-                            label="Exercise"
+                            label={t('exercise')}
                             variant="outlined"
                             value={row.exercise}
                             onChange={(e) => handleInputChange(index, 'exercise', e.target.value)}
