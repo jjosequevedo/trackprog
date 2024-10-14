@@ -3,8 +3,10 @@ import { TrainingTwoFormProps } from "@/app/interfaces";
 import { Accordion, AccordionDetails, AccordionSummary, Box, TextField, Button, Link, Tooltip } from "@mui/material";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';  // Completed icon
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';  // Mark as Done icon
+import { useTranslations } from "next-intl";
 
 const TrainingTwoForm: React.FC<TrainingTwoFormProps> = ({ trainingData }) => {
+    const t = useTranslations('trainingForm');
     // State to track completion status for each set of each exercise
     const [completedSets, setCompletedSets] = useState<{ [key: number]: boolean[] }>({});
 
@@ -44,7 +46,7 @@ const TrainingTwoForm: React.FC<TrainingTwoFormProps> = ({ trainingData }) => {
                                             // backgroundColor: completedSets[index]?.[key] ? 'lightgreen' : 'transparent' // Change background if completed
                                         }}>
                                             <TextField
-                                                label="Planned repetitions"
+                                                label={t('plannedRepetitions')}
                                                 value={item.repetitions}
                                                 variant="outlined"
                                                 aria-readonly

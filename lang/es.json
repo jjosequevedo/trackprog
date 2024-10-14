@@ -39,6 +39,7 @@
         }
     },
     "trainingForm": {
-        "exercise": "Ejercicio"
+        "exercise": "Ejercicio",
+        "plannedRepetitions": "Repeticiones previstas"
     }
 }
