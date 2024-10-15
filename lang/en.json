@@ -41,6 +41,7 @@
     },
     "trainingForm": {
         "exercise": "Exercise",
-        "plannedRepetitions": "Planned repetitions"
+        "plannedRepetitions": "Planned repetitions",
+        "letStart": "Let's start!"
     }
 }

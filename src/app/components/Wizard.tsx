@@ -5,15 +5,11 @@ import { Send } from '@mui/icons-material';
 import TrainingOneForm from './forms/TrainingOneForm';
 import TrainingTwoForm from './forms/TrainingTwoForm';
 import { Form, Formik } from 'formik';
-
-const steps = [
-    "Let's start!",
-    'What would you like to train today?',
-    'Enter weight and repetitions by set',
-    'Finish today!',
-];
+import { useTranslations } from "next-intl";
 
 const Wizard: React.FC = () => {
+    const t = useTranslations('trainingForm');
+
     const [activeStep, setActiveStep] = React.useState(0);
     const [trainingData, setTrainingData] = React.useState<any[]>([]);  // State to hold training data
 
@@ -21,6 +17,13 @@ const Wizard: React.FC = () => {
     const handleTrainingDataChange = (data: any[]) => {
         setTrainingData(data);
     };
+
+    const steps = [
+        t('letStart'),
+        'What would you like to train today?',
+        'Enter weight and repetitions by set',
+        'Finish today!',
+    ];
 
     const currentCmp = (step: number) => {
         switch (step) {
