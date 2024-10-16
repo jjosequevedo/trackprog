@@ -41,6 +41,7 @@
     "trainingForm": {
         "exercise": "Ejercicio",
         "plannedRepetitions": "Repeticiones previstas",
-        "letStart": "¡Empezamos!"
+        "letStart": "¡Empezamos!",
+        "whatWouldLikeToTrain": "¿Qué le gustaría entrenar hoy?"
     }
 }

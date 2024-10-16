@@ -20,7 +20,7 @@ const Wizard: React.FC = () => {
 
     const steps = [
         t('letStart'),
-        'What would you like to train today?',
+        t('whatWouldLikeToTrain'),
         'Enter weight and repetitions by set',
         'Finish today!',
     ];
