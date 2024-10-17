@@ -21,7 +21,7 @@ const Wizard: React.FC = () => {
     const steps = [
         t('letStart'),
         t('whatWouldLikeToTrain'),
-        'Enter weight and repetitions by set',
+        t('EnterWeightRepetitions'),
         'Finish today!',
     ];
 
