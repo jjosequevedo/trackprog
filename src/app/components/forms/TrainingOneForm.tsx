@@ -137,7 +137,7 @@ const TrainingOneForm: React.FC<{ onDataChange: (data: any) => void }> = ({ onDa
                                     inputMode="numeric"
                                     slotProps={{
                                         htmlInput: {
-                                            min: row.minReps,  // Ensure max reps is greater than or equal to min reps
+                                            min: row.minReps,
                                         }
                                     }}
                                 />
@@ -172,7 +172,7 @@ const TrainingOneForm: React.FC<{ onDataChange: (data: any) => void }> = ({ onDa
                                             inputMode="numeric"
                                             slotProps={{
                                                 htmlInput: {
-                                                    min: row.repetitionsPerSet[setIndex]?.minReps  // Ensure max reps >= min reps
+                                                    min: row.repetitionsPerSet[setIndex]?.minReps
                                                 }
                                             }}
                                         />
