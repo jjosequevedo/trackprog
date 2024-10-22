@@ -43,6 +43,7 @@
         "plannedRepetitions": "Repeticiones previstas",
         "letStart": "¡Empezamos!",
         "whatWouldLikeToTrain": "¿Qué le gustaría entrenar hoy?",
-        "EnterWeightRepetitions": "Enter weight and repetitions by set"
+        "enterWeightRepetitions": "Introduzca el peso y las repeticiones por serie",
+        "finishToday": "¡Hemos terminado por hoy!"
     }
 }

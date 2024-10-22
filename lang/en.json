@@ -44,6 +44,7 @@
         "plannedRepetitions": "Planned repetitions",
         "letStart": "Let's start!",
         "whatWouldLikeToTrain": "What would you like to train today?",
-        "EnterWeightRepetitions": "Enter weight and repetitions by set"
+        "enterWeightRepetitions": "Enter weight and repetitions by set",
+        "finishToday": "Finish today!"
     }
 }

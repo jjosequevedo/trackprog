@@ -21,8 +21,8 @@ const Wizard: React.FC = () => {
     const steps = [
         t('letStart'),
         t('whatWouldLikeToTrain'),
-        t('EnterWeightRepetitions'),
-        'Finish today!',
+        t('enterWeightRepetitions'),
+        t('finishToday'),
     ];
 
     const currentCmp = (step: number) => {
