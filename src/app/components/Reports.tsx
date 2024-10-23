@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Typography, Card, CardContent, List, ListItem, ListItemText, Container, Box } from '@mui/material';
 import { Report } from '../interfaces';
+import { useTranslations } from "next-intl";
 
 // Sample data for reports
 const reportsData: Report[] = [
@@ -10,10 +11,12 @@ const reportsData: Report[] = [
 ];
 
 const Reports: React.FC = () => {
+  const t = useTranslations('reports');
+
   return (
     <Container>
       <Typography variant="h4" component="h1" gutterBottom>
-        Reports
+        {t('reportTitle')}
       </Typography>
       <Box sx={{ mt: 4 }}>
         <List>

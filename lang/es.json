@@ -45,5 +45,8 @@
         "whatWouldLikeToTrain": "¿Qué le gustaría entrenar hoy?",
         "enterWeightRepetitions": "Introduzca el peso y las repeticiones por serie",
         "finishToday": "¡Hemos terminado por hoy!"
+    },
+    "reports": {
+        "reportTitle": "Reportes"
     }
 }

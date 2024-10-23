@@ -46,5 +46,8 @@
         "whatWouldLikeToTrain": "What would you like to train today?",
         "enterWeightRepetitions": "Enter weight and repetitions by set",
         "finishToday": "Finish today!"
+    },
+    "reports": {
+        "reportTitle": "Reports"
     }
 }
